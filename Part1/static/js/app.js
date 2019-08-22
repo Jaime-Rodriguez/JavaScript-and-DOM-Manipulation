@@ -6,6 +6,10 @@ var button = d3.select("#filter-btn");
 
 button.on("click", function() {
 
+// d3.event.PreventDefault();
+d3.select("tbody")
+.selectAll("tr").remove()
+.selectAll("td").remove();
 // Select the input element and get the raw HTML node
 var date_selected = d3.select("#datetime").property("value");
 
