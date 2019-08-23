@@ -1,6 +1,19 @@
 // Assign the data to ufos
 var ufos = data
 
+// Generate the initial grid when the page loads
+var tbody = d3.select("tbody");
+ufos.forEach(function(alien) {
+    console.log(alien);
+    var row = tbody.append("tr");
+    Object.entries(alien).forEach(function([key, value]) {
+      console.log(key, value);
+      // Append a cell to the row for each value
+      // in the weather report object
+      var cell = row.append("td");
+      cell.text(value);
+    });
+   });
 
 var button = d3.select("#filter-btn");
 

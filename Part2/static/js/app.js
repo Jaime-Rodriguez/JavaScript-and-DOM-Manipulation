@@ -1,6 +1,18 @@
 // Assign the data to ufos
 var ufos = data
 
+var tbody = d3.select("tbody");
+ufos.forEach(function(alien) {
+    console.log(alien);
+    var row = tbody.append("tr");
+    Object.entries(alien).forEach(function([key, value]) {
+      console.log(key, value);
+      // Append a cell to the row for each value
+      // in the weather report object
+      var cell = row.append("td");
+      cell.text(value);
+    });
+   });
 
 var button = d3.select("#filter-btn");
 
@@ -13,10 +25,12 @@ d3.select("tbody")
 // Select the input element and get the raw HTML node
 var date_selected = d3.select("#datetime").property("value");
 var city_selected = d3.select("#city").property("value");
-var state_selected = d3.select("#state").property("value");
-var country_selected = d3.select("#country").property("value");
-var shape_selected = d3.select("#shape").property("value");
-
+// var state_selected = d3.select("#state").property("value");
+// var country_selected = d3.select("#country").property("value");
+// var shape_selected = d3.select("#shape").property("value");
+if (city_selected.length==0) {
+    console.log('empty');
+} 
 
 var filteredufos = ufos.filter(ufo => ufo.datetime === date_selected);
 
